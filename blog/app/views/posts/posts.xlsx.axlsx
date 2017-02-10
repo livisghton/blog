@@ -1,0 +1,6 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Postagens") do |sheet|
+  @posts.each do |postagens|
+    sheet.add_row [postagens.titulo, postagens.conteudo, postagens.data]
+  end
+end

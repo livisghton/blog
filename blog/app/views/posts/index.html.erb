@@ -1,0 +1,33 @@
+<div class="container">
+
+  <!--Page Heading-->
+  <div class="row">
+    <div class="col-lg-12">
+
+      <h1 class="page-header"><%= pluralize(@posts.size, "Matéria", "Matérias")%>
+        <small class="novo_post"><%= link_to "Nova Postagem ", new_post_path%></small><br>
+        <small class="novo_post"><%= link_to " Download", posts_path(format: :xlsx)%></small>
+      </h1>
+
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Projeto -->
+
+  <% for post in @posts.reverse %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= image_tag post.image.url( :thumb) %>
+      </div>
+
+      <div>
+        <h3 ><%= link_to post.titulo, post %></h3>
+          <small class="small_font"><%= time_ago_in_words(post.created_at)%></small>  <!-- imprime o tempo da postagem-->
+        <p><%= post.conteudo %></p>
+      </div>
+
+    </div>
+    <br/><hr>
+  <% end %>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <% if @post.comentarios.size > 0 %> <!-- verifica se existe algum comentário-->
+        <div class="jumbotron">
+            <ul>
+                <% @comentarios.each  do |comentario| %>
+                    <li>
+                        <p>
+                            <%= comentario.nome%>
+                            <small class="small_font_rating"> <%= pluralize(comentario.avaliacao, 'estrela', 'estrelas') %></small>
+                            <small class="small_font"> - <%= time_ago_in_words(comentario.created_at)%></small>
+                        </p>
+
+                        <p>
+                            <%= comentario.comentario %>
+                        </p>
+                    </li>
+                    <% end %>
+            </ul>
+        </div>
+    <% else %>
+        <div class="jumbotron">
+            <h3>Não existe comentario</h3>
+        </div>
+    <% end %>
+
+
+    <%= link_to posts_path, class: 'btn btn-link' do %>
+        <i class="glyphicon glyphicon-home"> Post</i>
+    <% end %>
+
+</div>
